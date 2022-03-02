@@ -2,6 +2,7 @@
 
 import sys
 from Patisserie import Patisserie
+from Patissier import Patissier
 import pickle
 
 
@@ -51,6 +52,16 @@ def main():
 
     print("\n\t- Objet récupéré de /tmp/data.pickle:")
     print(backup)
+
+    patissier = Patissier("Foo", "Bar", [backup, Patisserie(50, 'tarte')])
+    print(patissier)
+    for i in patissier.get_patisseries():
+        print(i)
+
+    print("\n\t- Tri:")
+    patissier.tri__patisseries()
+    for i in patissier.get_patisseries():
+        print(i)
 
     return 0
 

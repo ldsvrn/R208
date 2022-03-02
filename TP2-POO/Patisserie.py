@@ -49,10 +49,16 @@ class Patisserie:
     def set_cat(self, cat):
         self.__cat = cat
 
+    def get_createur(self) -> str:
+        return self.__createur
+
+    def set_createur(self, createur):
+        self.__createur = createur
+
     @classmethod
-    def get_createur(cls) -> str:
+    def get_createur_cls(cls) -> str:
         return cls.__createur
 
     @classmethod
-    def set_createur(cls, createur):
+    def set_createur_cls(cls, createur):
         cls.__createur = createur
