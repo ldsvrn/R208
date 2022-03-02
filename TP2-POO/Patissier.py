@@ -21,6 +21,9 @@ class Patissier:
         return self.__patisseries == other.__patisseries
 
     def tri__patisseries(self):
+        if self.__is_trier():
+            return 0
+
         n = len(self.__patisseries)
         for i in range(n - 1):
             for j in range(n - 1):
@@ -31,6 +34,12 @@ class Patissier:
                     self.__patisseries[j].set_poids(next)
                     self.__patisseries[j+1].set_poids(temp)
 
+    def __is_trier(self):
+        liste = []
+        for i in self.__patisseries:
+            liste.append(i.get_poids())
+
+        return sorted(liste) == liste
 
     def get_patisseries(self):
         return self.__patisseries

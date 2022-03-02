@@ -53,7 +53,8 @@ def main():
     print("\n\t- Objet récupéré de /tmp/data.pickle:")
     print(backup)
 
-    patissier = Patissier("Foo", "Bar", [backup, Patisserie(50, 'tarte')])
+    # a trier:
+    patissier = Patissier("Foo", "Bar", [Patisserie(50, 'tarte'), Patisserie(45, 'gateau'), Patisserie(75, 'tarte')])
     print(patissier)
     for i in patissier.get_patisseries():
         print(i)
@@ -62,9 +63,6 @@ def main():
     patissier.tri__patisseries()
     for i in patissier.get_patisseries():
         print(i)
-
-    return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())
