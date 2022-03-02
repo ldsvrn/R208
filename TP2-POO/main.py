@@ -2,11 +2,12 @@
 
 import sys
 from Patisserie import Patisserie
+import pickle
 
 
 def main():
-    pat = Patisserie()
-    pat2 = Patisserie()
+    pat = Patisserie(250, "tarte")
+    pat2 = Patisserie(200, "gateau")
 
     print(pat.get_cat_autorise())
 
@@ -32,7 +33,7 @@ def main():
     else:
         print("Pas le même poids!")
 
-    pat.set_poids(100)
+    pat.set_poids(200)
 
     if pat == pat2:
         print("Poids égal!")
@@ -41,6 +42,15 @@ def main():
 
     print(Patisserie(100, 'gateau') + Patisserie(50, 'gateau'))
     print(Patisserie(100, 'gateau') + Patisserie(50, 'tarte'))
+
+    with open("/tmp/data.pickle", 'wb') as file:
+        pickle.dump(pat, file)
+
+    with open("/tmp/data.pickle", 'rb') as file:
+        backup = pickle.load(file)
+
+    print("\n\t- Objet récupéré de /tmp/data.pickle:")
+    print(backup)
 
     return 0
 

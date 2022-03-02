@@ -1,3 +1,6 @@
+import pickle
+
+
 class Patisserie:
     __createur = "ratatouille"
 
@@ -19,6 +22,15 @@ class Patisserie:
             return Patisserie(self.__poids + other.__poids, self.__cat)
         else:
             return Patisserie(self.__poids + other.__poids, None)
+
+    def sauvegarder(self, chemin):
+        with open(chemin, "wb") as file:
+            pickle.dump(self, file)
+
+    @staticmethod
+    def charger(chemin):
+        with open(chemin, "rb") as file:
+            return pickle.load(file)
 
     @staticmethod
     def get_cat_autorise():
