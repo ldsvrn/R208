@@ -3,17 +3,29 @@ class Patisserie:
 
     def __init__(self, poids = 0, categorie = None):
         self.__poids = poids
-        self.__cat = categorie
+        if categorie in self.get_cat_autorise():
+            self.__cat = categorie
+        else:
+            self.__cat = None
 
     def __str__(self) -> str:
-        return f"Patisserie: poids={self.__poids}, categorie={self.__cat}"
+        return f"Patisserie: poids={self.__poids}, categorie={self.__cat}, createur={self.__createur}"
+
+    def __eq__(self, other):
+        return self.__poids == other.__poids
+
+    def __add__(self, other):
+        if self.__cat == other.__cat:
+            return Patisserie(self.__poids + other.__poids, self.__cat)
+        else:
+            return Patisserie(self.__poids + other.__poids, None)
 
     @staticmethod
     def get_cat_autorise():
         return ["gateau", "tarte"]
 
     # Accesseurs:
-    def get_poids(self) -> float:
+    def get_poids(self) -> int:
         return self.__poids
 
     def set_poids(self, poids):
