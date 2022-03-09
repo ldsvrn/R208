@@ -52,6 +52,10 @@ class Guerrier:
     def get_name(self) -> str:
         return self.__name
 
+    def set_name(self, name):
+        if Guerrier.chk_name(name):
+            self.__name = name
+
     def get_lvl(self) -> int:
         return self.__lvl
 
